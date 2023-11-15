@@ -4,6 +4,13 @@ A hashtable implementation in C
 I would not recommend this to be used in production software; this is purely for my own learning and use-cases.
 This implementation uses open-addressing and double-hashing to resolve collisions.
 
+#TODO:
+-Setting values
+-Finish unit testing
+-Static Typing implementation to optimize for speed
+
+
+
 # Use
 Include hash\_table.h and compile with hash\_table.c, link with math.h as necessary.
 
@@ -43,7 +50,7 @@ ht\_delete returns 0 on success, -1 if the object is not in the table.
 ht\_get returns a void\* to the value on successful retrieval. Cast as appropriate. On failure, this returns NULL.
 
 ## Clearing
-clear\_table clears the current table and resizes to the supplied size. When called with size -1, the default bucket size is used.
+clear\_table clears the current table and resizes to the supplied size. When called with size < 1, the default bucket size is used.
 
 ## Deletion
 delete\_table is a convenience function to free a hashtable struct in its entirety. Using a pointer after this function

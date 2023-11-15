@@ -115,7 +115,7 @@ static unsigned long probe_get(HASH_TABLE* ht, const void* key, const size_t key
 
 	HASH_ENTRY* entries = ht->hash_table;
 
-	while(!(equal(key, key_size, (entries + i)->key, (entries + i)->key_size)) && (entries + i)->occupied != 1)
+	while(!(equal(key, key_size, (entries + i)->key, (entries + i)->key_size)))
 	{
 		printf("searching");	
 		i = (i + j) % ht->size;
@@ -123,6 +123,10 @@ static unsigned long probe_get(HASH_TABLE* ht, const void* key, const size_t key
 		{
 			return -1;
 		}
+	}
+
+	if(!(entries + i) -> occupied){
+		return -1;
 	}
 	
 
